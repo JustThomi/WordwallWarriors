@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgkx6epuldjwb"]
+
+[ext_resource type="Texture2D" uid="uid://bay0mfja0llgw" path="res://assets/tower/tower.png" id="1_kxfiy"]
+[ext_resource type="Script" path="res://src/entities/tower/tower.gd" id="2_heyng"]
+[ext_resource type="PackedScene" uid="uid://l00n6jvnu3jy" path="res://src/utils/hit_box.tscn" id="2_j3ifn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nxsgq"]
+radius = 6.0
+height = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nxr0"]
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ejh4q"]
+bg_color = Color(0, 0.639216, 0.945098, 1)
+
+[node name="Tower" type="Sprite2D"]
+scale = Vector2(7.57143, 7.57143)
+texture = ExtResource("1_kxfiy")
+script = ExtResource("2_heyng")
+
+[node name="HitBox" parent="." instance=ExtResource("2_j3ifn")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CapsuleShape2D_nxsgq")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -10.9623
+offset_top = -16.2453
+offset_right = 11.0377
+offset_bottom = -12.2453
+theme_override_styles/background = SubResource("StyleBoxFlat_0nxr0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ejh4q")
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

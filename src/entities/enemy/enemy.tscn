@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b20alsjtdgui4"]
+
+[ext_resource type="Script" path="res://src/entities/enemy/enemy.gd" id="1_3j7pv"]
+[ext_resource type="FontFile" uid="uid://b4otp6xgrkyov" path="res://assets/fonts/pixel_font.ttf" id="2_jc2ia"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c8me4"]
+radius = 21.0
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_3j7pv")
+
+[node name="HitCollision" type="CollisionShape2D" parent="."]
+position = Vector2(19, 20)
+shape = SubResource("CircleShape2D_c8me4")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_jc2ia")
+theme_override_font_sizes/font_size = 32
+text = "enemy"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

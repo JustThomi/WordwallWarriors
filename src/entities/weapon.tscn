@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp3g7pi7p7myf"]
+
+[ext_resource type="FontFile" uid="uid://b4otp6xgrkyov" path="res://assets/fonts/pixel_font.ttf" id="1_jv5e1"]
+[ext_resource type="Script" path="res://src/entities/weapon.gd" id="2_tquty"]
+
+[node name="Weapon" type="LineEdit"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -48.0
+offset_right = 150.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_jv5e1")
+theme_override_font_sizes/font_size = 16
+placeholder_text = "attack"
+alignment = 1
+max_length = 20
+caret_blink = true
+caret_blink_interval = 0.5
+script = ExtResource("2_tquty")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="text_submitted" from="." to="." method="_on_text_submitted"]

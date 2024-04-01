@@ -1,23 +1,24 @@
-extends Node2D
+extends Path2D
 
 @onready var enemy := preload("res://src/entities/enemy/enemy.tscn")
+@onready var spawn_timer := $Timer
+
 var rng = RandomNumberGenerator.new()
+
+func reset_timer():
+	spawn_timer.wait_time = rng.randi_range(2, 4)
+	spawn_timer.start()
 
 func spawn_enemy():
 	var e = enemy.instantiate()
 	CombatManager.add_enemy(e)
-	
-	# set pos to a random marker (no matter how many markers there are)
-	var random_pos = rng.randi_range(0, get_child_count() - 1)
-	e.transform = get_child(random_pos).transform
-
-	get_parent().get_node('Enemies').add_child.call_deferred(e)
+	self.add_child.call_deferred(e)
 
 func _ready():
 	rng.randomize()
 	spawn_enemy()
+	reset_timer()
 
-# quick and dirty continuous spawn for testing
-func _process(_delta):
-	if len(CombatManager.enemies) < 4:
-		spawn_enemy()
+func _on_timer_timeout():
+	spawn_enemy()
+	reset_timer()

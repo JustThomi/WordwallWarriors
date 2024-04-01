@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends PathFollow2D
 
 @onready var text := $Label
 
@@ -16,25 +16,19 @@ var words = [
 	'enemy',
 ]
 
-const SPEED := 100.0
-var vel : Vector2
-var target : Vector2
+const SPEED := 100
 var rng = RandomNumberGenerator.new()
 
 func set_word():
 	var rnr = rng.randi_range(0, len(words) - 1)
 	text.text = words[rnr]
 
-func get_tower_position():
-	return Vector2.ZERO
+func move(delta):
+	self.progress += SPEED * delta
 
 func _ready():
 	rng.randomize()
 	set_word()
 
-# this moves in streight line. Will add path following later
-func _physics_process(_delta):
-	target = get_tower_position()
-	velocity = position.direction_to(target) * SPEED
-
-	move_and_slide()
+func _process(delta):
+	move(delta)

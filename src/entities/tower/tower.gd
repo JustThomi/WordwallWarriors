@@ -20,6 +20,6 @@ func check_dead():
 func _ready():
 	hp_bar.value = health
 
-func _on_hit_box_body_entered(body):
-	CombatManager.remove_enemy(body)
+func _on_hit_box_area_entered(area):
+	CombatManager.remove_enemy(area.get_parent())
 	take_damage(10)

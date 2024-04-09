@@ -9,7 +9,6 @@ func take_damage(dmg):
 	
 	# this will be used to acutally trigger lose screen later
 	if check_dead():
-		get_parent().get_node("Enemies").process_mode = Node.PROCESS_MODE_DISABLED
 		CombatManager.lose_screen.visible = true
 	
 func check_dead():

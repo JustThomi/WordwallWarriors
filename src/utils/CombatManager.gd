@@ -24,3 +24,8 @@ func check_attack(word: String):
 			score += 1
 			score_lable.text = str(score)
 			remove_enemy(enemy)
+
+# TEMP EXIT TO MENU LOGIC
+func _input(_event):
+	if Input.is_action_just_pressed("pause"):
+		get_tree().change_scene_to_file("res://src/scenes/menu.tscn")

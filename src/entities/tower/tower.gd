@@ -7,7 +7,6 @@ func take_damage(dmg):
 	health -= dmg
 	hp_bar.value = health
 	
-	# this will be used to acutally trigger lose screen later
 	if check_dead():
 		CombatManager.lose_screen.visible = true
 	

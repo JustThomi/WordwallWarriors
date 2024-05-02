@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqerv0tjl6erp"]
+
+[ext_resource type="FontFile" uid="uid://b4otp6xgrkyov" path="res://assets/fonts/pixel_font.ttf" id="1_2o8ql"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7besg"]
+
+[node name="ScoreScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -213.5
+offset_right = 213.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.14902, 0.14902, 0.14902, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_2o8ql")
+theme_override_font_sizes/font_size = 64
+text = "HIGH SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+theme_override_styles/separator = SubResource("StyleBoxEmpty_7besg")
+
+[node name="Score" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.14902, 0.14902, 0.14902, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_2o8ql")
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+theme_override_styles/separator = SubResource("StyleBoxEmpty_7besg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Back" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_2o8ql")
+theme_override_font_sizes/font_size = 32
+text = "Back"

@@ -4,22 +4,26 @@ extends Control
 
 @onready var settings = $CanvasLayer/Settings
 @onready var menu_ui = $CanvasLayer/MenuUi
-#var level_select = preload("res://src/scenes/levels/level_select.tscn")
-var level_1 = preload("res://src/scenes/levels/level.tscn")
+@onready var score = $CanvasLayer/ScoreScreen
+var level_select = preload("res://src/scenes/level_select.tscn")
 
-
+# this is nooooot a good slution but it's quick af
 func _on_play_pressed():
-	# will go to level select once I add that
-	get_tree().change_scene_to_packed(level_1)
+	get_tree().change_scene_to_packed(level_select)
 
 func _on_settings_pressed():
-	settings.visible = true
-	menu_ui.visible = false
+	settings.show()
+	menu_ui.hide()
 
 func _on_quit_pressed():
 	get_tree().quit()
 
-# SETTINGS SIGNALS
+func _on_score_pressed():
+	score.show()
+	menu_ui.hide()
+
+# SETTINGS/SCORE SIGNALS
 func _on_back_pressed():
-	settings.visible = false
-	menu_ui.visible = true
+	settings.hide()
+	score.hide()
+	menu_ui.show()

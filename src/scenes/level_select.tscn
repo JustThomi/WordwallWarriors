@@ -1,0 +1,136 @@
+[gd_scene load_steps=3 format=3 uid="uid://8ve66ac0cn11"]
+
+[ext_resource type="FontFile" uid="uid://b4otp6xgrkyov" path="res://assets/fonts/pixel_font.ttf" id="1_pxxjs"]
+[ext_resource type="Script" path="res://src/scenes/level_button.gd" id="2_nnfmw"]
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 5
+
+[node name="Level1" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_pxxjs")
+theme_override_font_sizes/font_size = 32
+text = "1"
+script = ExtResource("2_nnfmw")
+
+[node name="Level2" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_pxxjs")
+theme_override_font_sizes/font_size = 32
+text = "2"
+script = ExtResource("2_nnfmw")
+
+[node name="Level3" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_pxxjs")
+theme_override_font_sizes/font_size = 32
+text = "3"
+script = ExtResource("2_nnfmw")
+
+[node name="Level4" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_pxxjs")
+theme_override_font_sizes/font_size = 32
+text = "4"
+script = ExtResource("2_nnfmw")
+
+[node name="Level5" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_pxxjs")
+theme_override_font_sizes/font_size = 32
+text = "5"
+script = ExtResource("2_nnfmw")
+
+[node name="Level6" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_pxxjs")
+theme_override_font_sizes/font_size = 32
+text = "6"
+script = ExtResource("2_nnfmw")
+
+[node name="Level7" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_pxxjs")
+theme_override_font_sizes/font_size = 32
+text = "7"
+script = ExtResource("2_nnfmw")
+
+[node name="Level8" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_pxxjs")
+theme_override_font_sizes/font_size = 32
+text = "8"
+script = ExtResource("2_nnfmw")
+
+[node name="Level9" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_pxxjs")
+theme_override_font_sizes/font_size = 32
+text = "9"
+script = ExtResource("2_nnfmw")
+
+[node name="Level10" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_pxxjs")
+theme_override_font_sizes/font_size = 32
+text = "10"
+script = ExtResource("2_nnfmw")
+
+[connection signal="pressed" from="GridContainer/Level1" to="GridContainer/Level1" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/Level2" to="GridContainer/Level2" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/Level3" to="GridContainer/Level3" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/Level4" to="GridContainer/Level4" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/Level5" to="GridContainer/Level5" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/Level6" to="GridContainer/Level6" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/Level7" to="GridContainer/Level7" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/Level8" to="GridContainer/Level8" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/Level9" to="GridContainer/Level9" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/Level10" to="GridContainer/Level10" method="_on_pressed"]

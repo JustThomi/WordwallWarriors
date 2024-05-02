@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnp6d2mqhr4r0"]
+[gd_scene load_steps=7 format=3 uid="uid://dnp6d2mqhr4r0"]
 
 [ext_resource type="FontFile" uid="uid://b4otp6xgrkyov" path="res://assets/fonts/pixel_font.ttf" id="1_fqawy"]
 [ext_resource type="Script" path="res://src/scenes/menu.gd" id="1_qxl8e"]
 [ext_resource type="TileSet" uid="uid://c0keu80duunbd" path="res://assets/environment/tileset.tres" id="2_ah00u"]
 [ext_resource type="PackedScene" uid="uid://cgkx6epuldjwb" path="res://src/entities/tower/tower.tscn" id="3_1xweq"]
 [ext_resource type="PackedScene" uid="uid://c6r80pat5mkjv" path="res://src/scenes/settings_screen.tscn" id="4_ce58o"]
+[ext_resource type="PackedScene" uid="uid://cqerv0tjl6erp" path="res://src/scenes/score_screen.tscn" id="4_s7oo7"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -38,6 +39,9 @@ visible = false
 visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreScreen" parent="CanvasLayer" instance=ExtResource("4_s7oo7")]
+visible = false
 
 [node name="Settings" parent="CanvasLayer" instance=ExtResource("4_ce58o")]
 visible = false
@@ -80,6 +84,14 @@ theme_override_fonts/font = ExtResource("1_fqawy")
 theme_override_font_sizes/font_size = 32
 text = " Play "
 
+[node name="Score" type="Button" parent="CanvasLayer/MenuUi/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_fqawy")
+theme_override_font_sizes/font_size = 32
+text = " Score "
+
 [node name="Settings" type="Button" parent="CanvasLayer/MenuUi/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -114,10 +126,13 @@ text = "Wordwall
 Warriors"
 vertical_alignment = 1
 
+[connection signal="pressed" from="CanvasLayer/ScoreScreen/VBoxContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="CanvasLayer/Settings/VBoxContainer/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="CanvasLayer/MenuUi/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/MenuUi/VBoxContainer/Score" to="." method="_on_score_pressed"]
 [connection signal="pressed" from="CanvasLayer/MenuUi/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/MenuUi/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 
 [editable path="Background/Tower"]
+[editable path="CanvasLayer/ScoreScreen"]
 [editable path="CanvasLayer/Settings"]

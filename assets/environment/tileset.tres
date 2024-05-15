@@ -4,7 +4,7 @@
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vnps2"]
 texture = ExtResource("1_ewexq")
-texture_region_size = Vector2i(32, 32)
+texture_region_size = Vector2i(1, 1)
 3:3/0 = 0
 3:4/0 = 0
 2:3/0 = 0

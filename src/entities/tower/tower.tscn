@@ -1,12 +1,84 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgkx6epuldjwb"]
+[gd_scene load_steps=18 format=3 uid="uid://cgkx6epuldjwb"]
 
-[ext_resource type="Texture2D" uid="uid://bay0mfja0llgw" path="res://assets/tower/tower.png" id="1_kxfiy"]
+[ext_resource type="Texture2D" uid="uid://gr0b05o7l4ro" path="res://assets/tower/Tower_Blue.png" id="1_44lgp"]
 [ext_resource type="Script" path="res://src/entities/tower/tower.gd" id="2_heyng"]
 [ext_resource type="PackedScene" uid="uid://l00n6jvnu3jy" path="res://src/utils/hit_box.tscn" id="2_j3ifn"]
+[ext_resource type="Texture2D" uid="uid://c60fq0ggn4ytb" path="res://assets/Pixel Art Top Down - Basic/explosion.png" id="4_wbei3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nxsgq"]
-radius = 6.0
-height = 20.0
+radius = 17.2
+height = 79.2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lp83b"]
+atlas = ExtResource("4_wbei3")
+region = Rect2(0, 0, 30, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucmml"]
+atlas = ExtResource("4_wbei3")
+region = Rect2(32, 0, 30, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktl58"]
+atlas = ExtResource("4_wbei3")
+region = Rect2(64, 0, 30, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7377q"]
+atlas = ExtResource("4_wbei3")
+region = Rect2(96, 0, 30, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvfpd"]
+atlas = ExtResource("4_wbei3")
+region = Rect2(128, 0, 30, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pd7e0"]
+atlas = ExtResource("4_wbei3")
+region = Rect2(160, 0, 30, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_154sv"]
+atlas = ExtResource("4_wbei3")
+region = Rect2(192, 0, 30, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40lbe"]
+atlas = ExtResource("4_wbei3")
+region = Rect2(224, 0, 30, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3yi1"]
+atlas = ExtResource("4_wbei3")
+region = Rect2(256, 0, 30, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_syh0i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lp83b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucmml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktl58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7377q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvfpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pd7e0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_154sv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40lbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3yi1")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nxr0"]
 bg_color = Color(0.156863, 0.156863, 0.156863, 1)
@@ -15,20 +87,30 @@ bg_color = Color(0.156863, 0.156863, 0.156863, 1)
 bg_color = Color(0, 0.639216, 0.945098, 1)
 
 [node name="Tower" type="Sprite2D"]
-scale = Vector2(7.57143, 7.57143)
-texture = ExtResource("1_kxfiy")
+modulate = Color(1, 1, 0.960784, 1)
+light_mask = 71
+position = Vector2(0, -7)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_44lgp")
 script = ExtResource("2_heyng")
 
 [node name="HitBox" parent="." instance=ExtResource("2_j3ifn")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 6.4)
 shape = SubResource("CapsuleShape2D_nxsgq")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HitBox"]
+position = Vector2(0.8, 5.6)
+sprite_frames = SubResource("SpriteFrames_syh0i")
+animation = &"fire"
+frame = 8
+
 [node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -10.9623
-offset_top = -16.2453
-offset_right = 11.0377
-offset_bottom = -12.2453
+offset_left = -12.0
+offset_top = -46.4
+offset_right = 10.0
+offset_bottom = -42.4
 theme_override_styles/background = SubResource("StyleBoxFlat_0nxr0")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ejh4q")
 step = 1.0

@@ -1,10 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://b20alsjtdgui4"]
+[gd_scene load_steps=9 format=3 uid="uid://b20alsjtdgui4"]
 
 [ext_resource type="Script" path="res://src/entities/enemy/enemy.gd" id="1_3j7pv"]
+[ext_resource type="Texture2D" uid="uid://52ftoe1ueehp" path="res://assets/Monster/Monster.png" id="2_hnhop"]
 [ext_resource type="FontFile" uid="uid://b4otp6xgrkyov" path="res://assets/fonts/pixel_font.ttf" id="2_jc2ia"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c8me4"]
 radius = 21.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iuq6s"]
+atlas = ExtResource("2_hnhop")
+region = Rect2(0, 147, 48, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbpmt"]
+atlas = ExtResource("2_hnhop")
+region = Rect2(49, 147, 48, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oum5g"]
+atlas = ExtResource("2_hnhop")
+region = Rect2(98, 147, 48, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fm82q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iuq6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbpmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oum5g")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
 
 [node name="Enemy" type="PathFollow2D"]
 rotates = false
@@ -18,6 +48,12 @@ collision_layer = 2
 [node name="HitCollision" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(19, 20)
 shape = SubResource("CircleShape2D_c8me4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(19, 52)
+sprite_frames = SubResource("SpriteFrames_fm82q")
+animation = &"move"
+frame_progress = 0.924241
 
 [node name="Label" type="Label" parent="."]
 offset_left = -19.0

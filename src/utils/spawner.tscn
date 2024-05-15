@@ -1,10 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwhqm2xkrwgq4"]
+[gd_scene load_steps=3 format=3 uid="uid://cwhqm2xkrwgq4"]
 
 [ext_resource type="Script" path="res://src/utils/spawner.gd" id="1_ip4n8"]
 
-[node name="Spawner" type="Path2D"]
+[sub_resource type="Curve2D" id="Curve2D_1q4su"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 2)
+}
+point_count = 1
+
+[node name="Spawner3" type="Path2D"]
+curve = SubResource("Curve2D_1q4su")
 script = ExtResource("1_ip4n8")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 1.648
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

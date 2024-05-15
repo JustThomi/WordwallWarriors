@@ -1,7 +1,7 @@
 extends PathFollow2D
 
 @onready var text := $Label
-
+@onready var move_up = $Area2D/AnimatedSprite2D
 # will move this to separate file 
 var words = [
 	'circle',
@@ -28,6 +28,7 @@ func move(delta):
 
 func _ready():
 	rng.randomize()
+	move_up.play("move")
 	set_word()
 
 func _process(delta):

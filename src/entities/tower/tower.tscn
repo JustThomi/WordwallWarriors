@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://l00n6jvnu3jy" path="res://src/utils/hit_box.tscn" id="2_j3ifn"]
 [ext_resource type="Texture2D" uid="uid://c60fq0ggn4ytb" path="res://assets/Pixel Art Top Down - Basic/explosion.png" id="4_wbei3"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nxsgq"]
-radius = 17.2
-height = 79.2
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3yi1"]
+atlas = ExtResource("4_wbei3")
+region = Rect2(256, 0, 30, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lp83b"]
 atlas = ExtResource("4_wbei3")
@@ -41,13 +41,12 @@ region = Rect2(192, 0, 30, 32)
 atlas = ExtResource("4_wbei3")
 region = Rect2(224, 0, 30, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w3yi1"]
-atlas = ExtResource("4_wbei3")
-region = Rect2(256, 0, 30, 32)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_syh0i"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3yi1")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lp83b")
 }, {
@@ -75,10 +74,14 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_w3yi1")
 }],
-"loop": true,
+"loop": false,
 "name": &"fire",
 "speed": 5.0
 }]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nxsgq"]
+radius = 17.2
+height = 79.2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nxr0"]
 bg_color = Color(0.156863, 0.156863, 0.156863, 1)
@@ -94,17 +97,18 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_44lgp")
 script = ExtResource("2_heyng")
 
+[node name="FireAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.8, 30.4)
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_syh0i")
+animation = &"fire"
+speed_scale = 3.0
+
 [node name="HitBox" parent="." instance=ExtResource("2_j3ifn")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(0, 6.4)
 shape = SubResource("CapsuleShape2D_nxsgq")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HitBox"]
-position = Vector2(0.8, 5.6)
-sprite_frames = SubResource("SpriteFrames_syh0i")
-animation = &"fire"
-frame = 8
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -12.0

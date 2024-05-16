@@ -32,10 +32,10 @@ layer_0/tile_data = PackedInt32Array(-65539, 196608, 4, -65540, 196608, 3, -4, 1
 position = Vector2(249, 8)
 scale = Vector2(15, 15)
 
-[node name="HitBox" parent="Background/Tower" index="0"]
+[node name="HitBox" parent="Background/Tower" index="1"]
 visible = false
 
-[node name="HealthBar" parent="Background/Tower" index="1"]
+[node name="HealthBar" parent="Background/Tower" index="2"]
 visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

@@ -20,7 +20,7 @@ func remove_enemy(enemy):
 
 func check_attack(word: String):
 	for enemy in enemies:
-		if word == enemy.text.text:
+		if word == enemy.verStr:
 			score += 1
 			score_lable.text = str(score)
 			remove_enemy(enemy)

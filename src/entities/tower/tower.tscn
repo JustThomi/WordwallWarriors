@@ -99,7 +99,6 @@ script = ExtResource("2_heyng")
 
 [node name="FireAnimation" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.8, 30.4)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_syh0i")
 animation = &"fire"
 speed_scale = 3.0

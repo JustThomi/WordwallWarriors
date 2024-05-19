@@ -5,7 +5,12 @@ extends Control
 @onready var settings = $CanvasLayer/Settings
 @onready var menu_ui = $CanvasLayer/MenuUi
 @onready var score = $CanvasLayer/ScoreScreen
+@onready var mixed_words_check = $CanvasLayer/Settings/VBoxContainer/VBoxContainer/CheckBox
+
 var level_select = preload("res://src/scenes/level_select.tscn")
+
+func _ready():
+	mixed_words_check.button_pressed = WordsLoader.is_mixed
 
 # this is nooooot a good slution but it's quick af
 func _on_play_pressed():
@@ -27,3 +32,6 @@ func _on_back_pressed():
 	settings.hide()
 	score.hide()
 	menu_ui.show()
+
+func _on_check_box_toggled(toggled_on):
+	WordsLoader.is_mixed = toggled_on

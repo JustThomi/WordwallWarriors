@@ -4,59 +4,46 @@ extends PathFollow2D
 @onready var move_up = $Area2D/AnimatedSprite2D
 
 var verStr : String
-var words = []
-var ver_words = []
-var index = -1
 var lvl = 0
 var lvlWords = 0
 
-
-func read_list():
-	var file_path = "res://src/entities/enemy/words.txt"  
-	var file = FileAccess.open(file_path, FileAccess.READ)
-	var content = file.get_as_text()
-	file.close()
-	var linii = content.split("\n")
-	
-	for linie in linii:
-		linie = linie.strip_edges()
-		if linie.find("-") != -1:
-			var parti = linie.split("-")
-			ver_words.append(parti[0].strip_edges())
-			words.append(parti[1].strip_edges())
-
-
-const SPEED := 100
+var speed := 100
 var rng = RandomNumberGenerator.new()
 
 func set_word():
-	index = rng.randi_range(0, lvlWords)
-	print(index)
-	print(lvlWords)
-	verStr = ver_words[index]
-	text.text = words[index]
+	var index = rng.randi_range(0, lvlWords)
 	
+	if WordsLoader.is_mixed:
+		verStr = WordsLoader.words[index]
+		text.text = WordsLoader.mixed_words[index]
+		speed = 50
+	else: # for normal words gamemode
+		verStr = WordsLoader.words[index]
+		text.text = WordsLoader.words[index]
 
 func move(delta):
-	self.progress += SPEED * delta
+	self.progress += speed * delta
+
+func get_current_level():
+	lvl = get_tree().root.get_child(2).get_name()
+	print(lvl)
+	match lvl:
+		"Level1":
+			lvlWords = 100
+		"Level2":
+			lvlWords = 150
+		"Level3":
+			lvlWords = 200
+		"Level4":
+			lvlWords = 250
+		"Level5":
+			lvlWords = 350
 
 func _ready():
-	lvl = get_tree().root.get_child(1).get_name()
-	print(lvl)
-	if lvl == "Level1":
-		lvlWords = 100
-	if lvl == "Level2":
-		lvlWords = 150
-	if lvl == "Level3":
-		lvlWords = 200
-	if lvl == "Level4":
-		lvlWords = 250
-	if lvl == "Level5":
-		lvlWords = 350
-	read_list()
 	rng.randomize()
-	move_up.play("move")
+	get_current_level()
 	set_word()
+	move_up.play("move")
 
 func _process(delta):
 	move(delta)

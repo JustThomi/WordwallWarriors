@@ -37,29 +37,11 @@ vertical_alignment = 1
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer/VBoxContainer"]
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "PLACEHOLDER SETTINGS"
-
-[node name="Button2" type="Button" parent="VBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "PLACEHOLDER SETTINGS"
-
-[node name="Button3" type="Button" parent="VBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "PLACEHOLDER SETTINGS"
-
-[node name="Button4" type="Button" parent="VBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "PLACEHOLDER SETTINGS"
-
-[node name="Button5" type="Button" parent="VBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "PLACEHOLDER SETTINGS"
-
-[node name="Button6" type="Button" parent="VBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "PLACEHOLDER SETTINGS"
+theme_override_fonts/font = ExtResource("1_2ngah")
+theme_override_font_sizes/font_size = 32
+text = "Dyslexic Mode"
 
 [node name="Back" type="Button" parent="VBoxContainer"]
 layout_mode = 2

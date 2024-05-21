@@ -1,13 +1,14 @@
 extends Node
 
 var score = 0
+var highscore = 0
 var score_lable : Label
 var enemies = []
 
-# BAD solution but it works for now
 var lose_screen : Control
 
 func reset():
+	highscore = max(score, highscore)
 	enemies = []
 	score = 0
 
@@ -15,8 +16,8 @@ func add_enemy(e):
 	enemies.append(e)
 
 func remove_enemy(enemy):
-	enemy.queue_free()
 	enemies.remove_at(enemies.find(enemy))
+	enemy.dead = true
 
 func check_attack(word: String):
 	for enemy in enemies:
@@ -29,3 +30,4 @@ func check_attack(word: String):
 func _input(_event):
 	if Input.is_action_just_pressed("pause"):
 		get_tree().change_scene_to_file("res://src/scenes/menu.tscn")
+		reset()

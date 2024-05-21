@@ -7,6 +7,7 @@ var verStr : String
 var lvl = 0
 var lvlWords = 0
 
+var dead := false
 var speed := 100
 var rng = RandomNumberGenerator.new()
 
@@ -26,7 +27,7 @@ func move(delta):
 
 func get_current_level():
 	lvl = get_tree().root.get_child(2).get_name()
-	print(lvl)
+	
 	match lvl:
 		"Level1":
 			lvlWords = 100
@@ -47,3 +48,5 @@ func _ready():
 
 func _process(delta):
 	move(delta)
+	if dead:
+		queue_free()
